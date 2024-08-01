@@ -54,6 +54,7 @@ node -v
 # Efetuando deploy
 
 Siga estes passos para configurar e fazer o deploy do projeto
+OBS: Sempre que for efetuar um deploy, use a versão `14.21.3` do nodejs.
 
 ## 1. Instalar NVM
 Este projeto funciona com a versão do Node.js `14.21.3`. Primeiro, instale o NVM.
