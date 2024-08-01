@@ -109,3 +109,6 @@ firebase login
 firebase deploy
 ```
 
+## Mapeamento
+![Mapeamento](https://github.com/lognsoft/nextSim/blob/main/mapeamento.jpg?raw=true)
+
