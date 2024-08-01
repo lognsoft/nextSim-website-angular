@@ -50,3 +50,62 @@ Para verificar qual versão do Node.js está atualmente ativa, digite:
 ```bash
 node -v
 ```
+
+# Efetuando deploy
+
+Siga estes passos para configurar e fazer o deploy de seu projeto usando NVM e Firebase.
+
+## 1. Instalar NVM
+Este projeto funciona com a versão do Node.js `14.21.3`. Primeiro, instale o NVM.
+
+## 2. Mudar para a versão do Node.js
+```bash
+nvm install 14.21.3
+nvm use 14.21.3
+```
+
+## 3. Instalação de dependências na raiz do projeto
+Na raiz do projeto, execute:
+```bash
+npm install
+```
+
+## 4. Instalação de dependências na pasta functions
+Acesse a pasta `functions` e execute:
+```bash
+npm install
+```
+
+## 5. Construção na pasta functions
+Dentro da pasta `functions`, execute:
+```bash
+npm run build
+```
+
+## 6. Construção na raiz do projeto
+Volte para a raiz do projeto e execute:
+```bash
+npm run build
+```
+
+## 7. Mudar para a versão mais recente do Node.js
+```bash
+nvm use <versão mais recente>
+```
+
+## 8. Instalar Firebase CLI
+Instale o Firebase CLI globalmente:
+```bash
+npm install -g firebase-tools
+```
+
+## 9. Login no Firebase
+```bash
+firebase login
+```
+
+## 10. Deploy usando Firebase
+```bash
+firebase deploy
+```
+
