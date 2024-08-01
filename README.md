@@ -1,27 +1,52 @@
-# Nextsim
+# Configurando NVM
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+**NVM (Node Version Manager)** é uma ferramenta que permite alterar a versão do Node.js sem precisar instalar diretamente na máquina. Isso facilita a troca de versões dentro de um projeto, tornando o gerenciamento de diferentes versões do Node.js mais simples e eficiente.
 
-## Development server
+## 1. Como instalar NVM
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para instalar o NVM, acesse o link de releases do projeto no GitHub:
+[https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
 
-## Code scaffolding
+## 2. Instalar uma versão específica do Node.js
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para instalar uma versão específica do Node.js, use o comando:
 
-## Build
+```bash
+nvm install <versão>
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Exemplo:
 
-## Running unit tests
+```bash
+nvm install 14.17.0
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 3. Listar todas as versões instaladas do Node.js
 
-## Running end-to-end tests
+Para listar todas as versões do Node.js que estão instaladas no seu sistema, utilize:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+nvm list
+```
 
-## Further help
+## 4. Usar uma versão específica do Node.js
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Para usar uma versão específica do Node.js, execute:
+
+```bash
+nvm use <versão>
+```
+
+Exemplo:
+
+```bash
+nvm use 14.17.0
+```
+
+## 5. Verificar a versão ativa do Node.js
+
+Para verificar qual versão do Node.js está atualmente ativa, digite:
+
+```bash
+node -v
+```
