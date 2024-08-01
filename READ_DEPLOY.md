@@ -18,7 +18,7 @@ nvm install <versão>
 Exemplo:
 
 ```bash
-nvm install 14.17.0
+nvm install 14.21.3
 ```
 
 ## 3. Listar todas as versões instaladas do Node.js
@@ -40,7 +40,7 @@ nvm use <versão>
 Exemplo:
 
 ```bash
-nvm use 14.17.0
+nvm use 14.21.3
 ```
 
 ## 5. Verificar a versão ativa do Node.js
