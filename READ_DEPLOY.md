@@ -53,12 +53,12 @@ node -v
 
 # Efetuando deploy
 
-Siga estes passos para configurar e fazer o deploy de seu projeto usando NVM e Firebase.
+Siga estes passos para configurar e fazer o deploy do projeto
 
 ## 1. Instalar NVM
 Este projeto funciona com a versão do Node.js `14.21.3`. Primeiro, instale o NVM.
 
-## 2. Mudar para a versão do Node.js
+## 2. Mudar a versão do Node.js
 ```bash
 nvm install 14.21.3
 nvm use 14.21.3
@@ -76,13 +76,13 @@ Acesse a pasta `functions` e execute:
 npm install
 ```
 
-## 5. Construção na pasta functions
+## 5. Build na pasta functions
 Dentro da pasta `functions`, execute:
 ```bash
 npm run build
 ```
 
-## 6. Construção na raiz do projeto
+## 6. Build na raiz do projeto
 Volte para a raiz do projeto e execute:
 ```bash
 npm run build
