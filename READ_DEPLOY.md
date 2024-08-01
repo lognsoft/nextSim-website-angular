@@ -102,6 +102,7 @@ npm install -g firebase-tools
 ## 9. Login no Firebase
 ```bash
 firebase login
+usuario: webmaster@solopropaganda.com.br
 ```
 
 ## 10. Deploy usando Firebase
