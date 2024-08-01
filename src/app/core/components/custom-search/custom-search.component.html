@@ -1,0 +1,248 @@
+<div class="custom-search-bg" *ngIf="showMe">
+  <div class="row h-100 align-items-center justify-content-center custom-search-type-simple"
+       *ngIf="type === CustomSearchType.simple">
+    <div class="close-me" (click)="closeMe()">
+      <img src="../../../../assets/images/coolicon.svg"/>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="row align-items-center justify-content-center no-gutters">
+        <div class="col-auto">
+          <span class="step-num" *ngIf="currentStep === 0">1</span>
+          <span class="step-num" *ngIf="currentStep === 1">2</span>
+          <span class="step-num" *ngIf="currentStep === 2">3</span>
+        </div>
+        <div class="col-auto">
+          <span class="step-label" *ngIf="currentStep === 0">Escolha uma <b>Finalidade</b>:</span>
+          <span class="step-label" *ngIf="currentStep === 1">Escolha uma <b>Categoria</b>:</span>
+          <span class="step-label" *ngIf="currentStep === 2">Digite ou escolha abaixo:</span>
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-center mt-4">
+        <div class="col-10">
+          <div class="row" *ngIf="currentStep === 0">
+            <div class="col">
+              <button class="button-selector" [class.current]="customSearch.categoria === 'alugar'"
+                      (click)="customSearch.categoria = 'alugar'">Alugar
+              </button>
+            </div>
+            <div class="col">
+              <button class="button-selector" [class.current]="customSearch.categoria === 'comprar'"
+                      (click)="customSearch.categoria = 'comprar'">Comprar
+              </button>
+            </div>
+          </div>
+          <div class="row" *ngIf="currentStep === 1">
+            <div class="col">
+
+
+              <div class="category" ngbDropdown #myDrop="ngbDropdown">
+                <div class="category-title" ngbDropdownToggle id="dropdownForm2"><span
+                  class="icon-category arrow-down-icon"></span> <span
+                  class="category-title-in">{{customSearch.finalidade || 'Categoria'}}</span></div>
+                <div class="category-options" ngbDropdownMenu aria-labelledby="dropdownForm2">
+                  <div class="form-check category-option" (click)="changeStep(2, 'residencial')">
+                    <label class="form-check-label">
+                      Residencial
+                    </label>
+                  </div>
+                  <div class="form-check category-option" (click)="changeStep(2, 'comercial')">
+                    <label class="form-check-label">
+                      Comercial
+                    </label>
+                  </div>
+                  <div class="form-check category-option" (click)="changeStep(2, 'lancamento')">
+                    <label class="form-check-label">
+                      Lançamentos
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="row" *ngIf="currentStep === 2">
+            <div class="col">
+              <div class="searchfield">
+                <input type="text" class="form-control" id="search-field"
+                       placeholder="Cidade, bairro ou código" autocomplete="off" [(ngModel)]="customSearch.query"
+                       (keyup)="searchAutocomplete($event)" id="userIdFirstWay" list="dynmicUserIds"
+                       [ngModelOptions]="{standalone: true}">
+                <!--                     [attr.list]="autocompletes && autocompletes.length > 4 ? 'dynmicUserIds': '' "-->
+                <datalist>
+                  <option *ngFor="let item of autocompletes" [value]="item">{{item}}</option>
+                </datalist>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-center mt-4">
+        <div class="col-auto">
+          <div class="steppers">
+            <div [class.current]="currentStep === 0" (click)="changeStep(0, null, true)"></div>
+            <div [class.current]="currentStep === 1" (click)="changeStep(1, null, true)"></div>
+            <div [class.current]="currentStep === 2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-center mt-4">
+        <div class="col-auto">
+          <button class="next-button" *ngIf="currentStep === 0" (click)="changeStep(1)">Avançar</button>
+          <button class="next-button" *ngIf="currentStep === 1" (click)="changeStep(2)">Avançar</button>
+          <button class="next-button" *ngIf="currentStep === 2" (click)="doSearch(true)">Buscar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row h-100 custom-search-type-complex justify-content-center" *ngIf="type === CustomSearchType.complex">
+    <div class="top-filter col-12">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <div class="close-me" (click)="closeMe()">
+            <img src="../../../../assets/images/coolicon.svg"/>
+            <span>Filtros</span>
+          </div>
+        </div>
+        <div class="col-auto">
+          <button class="button-apply" (click)="applyFilter()"><i class="custom-search"></i>Aplicar filtros</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 the-card">
+      <div class="close-me d-none d-sm-block" (click)="closeMe()">
+        <img src="../../../../assets/images/coolicon-black.svg"/>
+      </div>
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item" *ngIf="!(customSearch?.categoria === 'comprar' || customSearch?.categoria === 'alugar') && !(customSearch?.finalidade === 'residencial' || customSearch?.finalidade === 'comercial')"><a> Pesquisa </a></li>
+              <li class="breadcrumb-item" *ngIf="(customSearch?.categoria === 'comprar' || customSearch?.categoria === 'alugar') && (customSearch?.finalidade === 'residencial' || customSearch?.finalidade === 'comercial')"><a> Imóveis </a></li>
+              <li
+                class='breadcrumb-item active'
+                *ngIf="customSearch?.categoria === 'comprar' || customSearch?.categoria === 'alugar'">{{customSearch?.categoria === 'comprar' ? 'COMPRAR' : customSearch?.categoria === 'alugar' ? 'ALUGAR' : ('')}} </li>
+              <li
+                class='breadcrumb-item active'
+                *ngIf="customSearch?.finalidade === 'residencial' || customSearch?.finalidade === 'comercial'">{{customSearch?.finalidade === 'residencial' ? 'RESIDENCIAIS' : customSearch?.finalidade === 'comercial' ? 'COMERCIAIS' : ('')}} </li>
+              <li
+                class='breadcrumb-item active' *ngIf="!(customSearch?.categoria === 'comprar' || customSearch?.categoria === 'alugar') && !(customSearch?.finalidade === 'residencial' || customSearch?.finalidade === 'comercial') && queryParams?.query">{{customSearch?.query}} </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <h6>Cidade</h6>
+          <mat-form-field>
+            <mat-select placeholder="Cidade" (selectionChange)="changeCidade($event)" [(ngModel)]="customSearch.cidade">
+              <mat-option *ngFor="let city of cidades" [value]="city" >{{city}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <h6>Bairro</h6>
+          <mat-form-field multiple>
+            <mat-select placeholder="Bairro" multiple (selectionChange)="changeBairro($event)" [(ngModel)]="bairrosSelecionados">
+              <mat-option *ngFor="let bairro of customSearch.bairros" [value]="bairro">{{bairro}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <h6>Tipo do imóvel</h6>
+          <mat-form-field>
+            <mat-select placeholder="Todos os imóveis" multiple (selectionChange)="changeTipo($event)" [(ngModel)]="tiposSelecionados">
+              <mat-option *ngFor="let tipo of (customSearch.finalidade === 'residencial' ? TIPOS_RESIDENCIAL : TIPOS_RESIDENCIAL)" [value]="tipo">{{tipo | titlecase}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6">
+          <h6>Valor</h6>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="price_min">Preço mínimo</label>
+                <input type="text" class="form-control" id="price_min" [(ngModel)]="customSearch.precos.min" [textMask]="{mask: MASKS.currency.textMask}" (focusout)="inputPriceFocusOut($event, 0)" placeholder="Ex.: R$ 100"/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="price_max">Preço máximo</label>
+                <input type="text" class="form-control" id="price_max"  [(ngModel)]="customSearch.precos.max" [textMask]="{mask: MASKS.currency.textMask}" (focusout)="inputPriceFocusOut($event, 1)" placeholder="Ex.: R$ 1.000.000"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 order-md-2">
+          <h6>Quartos</h6>
+          <div class="boll-selector">
+            <button [class.current]="customSearch.dormitorios == 1" (click)="customSearch.dormitorios === 1 ? customSearch.dormitorios = null : customSearch.dormitorios = 1"><span>1</span>
+            </button>
+            <button [class.current]="customSearch.dormitorios == 2" (click)="customSearch.dormitorios === 2 ? customSearch.dormitorios = null : customSearch.dormitorios = 2"><span>2</span>
+            </button>
+            <button [class.current]="customSearch.dormitorios == 3" (click)="customSearch.dormitorios === 3 ? customSearch.dormitorios = null : customSearch.dormitorios = 3"><span>3</span>
+            </button>
+            <button [class.current]="customSearch.dormitorios == 4" (click)="customSearch.dormitorios === 4 ? customSearch.dormitorios = null : customSearch.dormitorios = 4"><span>4+</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-4  order-md-2">
+          <h6>Banheiros</h6>
+          <div class="boll-selector">
+            <button [class.current]="customSearch.banheiros == 1" (click)="customSearch.banheiros === 1 ? customSearch.banheiros = null : customSearch.banheiros = 1"><span>1</span>
+            </button>
+            <button [class.current]="customSearch.banheiros == 2" (click)="customSearch.banheiros === 2 ? customSearch.banheiros = null : customSearch.banheiros = 2"><span>2</span>
+            </button>
+            <button [class.current]="customSearch.banheiros == 3" (click)="customSearch.banheiros === 3 ? customSearch.banheiros = null : customSearch.banheiros = 3"><span>3</span>
+            </button>
+            <button [class.current]="customSearch.banheiros == 4" (click)="customSearch.banheiros === 4 ? customSearch.banheiros = null : customSearch.banheiros = 4"><span>4+</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 order-md-2">
+          <h6>Garagem</h6>
+          <div class="boll-selector">
+            <button [class.current]="customSearch.garagem == 1" (click)="customSearch.garagem === 1 ? customSearch.garagem = 0 : customSearch.garagem = 1"><span>1</span>
+            </button>
+            <button [class.current]="customSearch.garagem == 2" (click)="customSearch.garagem === 2 ? customSearch.garagem = 0 : customSearch.garagem = 2"><span>2</span>
+            </button>
+            <button [class.current]="customSearch.garagem == 3" (click)="customSearch.garagem === 3 ? customSearch.garagem = 0 : customSearch.garagem = 3"><span>3</span>
+            </button>
+            <button [class.current]="customSearch.garagem == 4" (click)="customSearch.garagem === 4 ? customSearch.garagem = 0 : customSearch.garagem = 4"><span>4+</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-6  order-md-1">
+          <h6>Área</h6>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="area_min">Mínimo 20m²</label>
+                <input type="text" class="form-control" id="area_min"   [(ngModel)]="customSearch.area.min" [textMask]="{mask: MASKS.number.textMask}" (focusout)="inputPriceFocusOut($event, 2)" placeholder="Ex.: 10 m²"/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="area_max">Máximo 1.000 m²</label>
+                <input type="text" class="form-control" id="area_max"  [(ngModel)]="customSearch.area.max" [textMask]="{mask: MASKS.number.textMask}" (focusout)="inputPriceFocusOut($event, 3)" placeholder="Ex.: 1000 m²"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-5 d-none d-sm-flex">
+        <div class="col-4">
+          <button class="button-apply justify-content-center" (click)="applyFilter()"><i class="custom-search"></i>Aplicar
+            filtros
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

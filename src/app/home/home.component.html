@@ -1,0 +1,190 @@
+<div id="backdrop">
+  <section class="container">
+    <!--  <section class="container" >-->
+    <div class="property_launches">
+      <h3>Confira os Nossos</h3>
+      <h2>Lançamentos</h2>
+      <span class="orange_bar_decoration"></span>
+
+
+      <div class="property_releases_nav">
+        <!--        <ul>-->
+        <!--          <li><a [class.active]="" class="active">Todos</a></li>-->
+        <!--          <li><a>Residencial</a></li>-->
+        <!--          <li><a>Comercial</a></li>-->
+        <!--        </ul>-->
+      </div>
+      <div class="property_releases_content">
+        <div class="container">
+          <div class="col-lg-10 offset-lg-1">
+            <div class="row">
+              <div class="col-12 col-sm-4" *ngFor="let lancamento of lancamentos">
+                <a [routerLink]="['/imoveis/lancamentos/' + lancamento.slug]">
+                  <div class="item" [style.background-image]="'url(' + lancamento.image + ')'">
+                    <div class="lancamento_nome">
+                      <div class="row">
+                        <div class="col">
+                          <span>{{lancamento.title.rendered}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="">
+              <a class="btn btn-see-all btn-rounded" [routerLink]="'/imoveis/lancamentos'">VER TODOS</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="blog-decoration top-session"></div>
+  <section class="blog_home_section" id="blog">
+    <div class="container">
+      <div class="blog-slider ">
+        <div class="blog_title">
+          <h2>Blog</h2>
+          <span class="orange_bar_decoration"></span>
+        </div>
+        <div class="blog-img" [ngStyle]="{'background-image': 'url(' + posts[currentPost]?.image + ')'}">
+          <div class="blog-label-category text-uppercase" id="b-label"></div>
+          <div class="blog-gradient animated fadeIn">
+            <a id="link-banner" class="animation animated fadeIn">
+              <h2 class="blog-h2  animated fadeInDown" id="b-title">{{posts[currentPost]?.title?.rendered}}</h2>
+              <h3 class="blog-h3  animated fadeInDown"
+                  id="b-subtitle">{{removeHTML(posts[currentPost]?.excerpt?.rendered)}}</h3>
+              <a class="blog-btnAction btn btn-generic-white btn-rounded mt-4  animated fadeInDown" id="blog_btnAction"
+                 [routerLink]="'/blog/' + posts[currentPost]?.slug">Ver mais <i class="arrow-icon"></i></a>
+            </a>
+          </div>
+          <div class="overlayBlog"></div>
+          <img class="animated fadeIn" alt="" id="b-img" height="400">
+        </div>
+        <div class="blog-controller">
+          <div class="blog-arrow-left">
+            <a id="btn_prev" (click)="prevPost()"><img
+              src="assets/img/blog-left-arrow.svg" alt="" width="94"></a>
+          </div>
+          <div class="blog-arrow-right">
+            <a id="btn_next" (click)="nextPost()"><img
+              src="assets/img/blog-right-arrow.svg" alt="" width="94"></a>
+          </div>
+        </div>
+        <div class="blog-thumb">
+          <ul>
+            <li *ngFor="let post of anotherPosts()">
+              <img [src]="post.image" [routerLink]="'/blog/' + post?.slug" alt=""/>
+            </li>
+          </ul>
+        </div>
+        <div class="blog-btn">
+          <a class="btn btn-see-all btn-rounded" [routerLink]="'/blog'">VER TODOS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="blog-decoration base-session" ></div>
+  <div class="container about-session">
+    <h2>Sobre nós</h2>
+    <span class="orange_bar_decoration"></span>
+    <div class="row about-session-block">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="about-img-block">
+          <div class="picture-frame " (click)="openVideo(content)">
+            <img src="assets/images/next-fachada2.png" alt="" class="picture fachada-play" />
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="about-text-block">
+          <h2 class="d-none d-sm-none d-md-block">Nossa História</h2>
+          <div class="d-block d-sm-block d-md-none">
+            <h2 class="text-center">Nossa História</h2>
+          </div>
+          <p>Somos uma imobiliária com 12 anos de atuação unindo visão empresarial e investimento imobiliário, com o objetivo de realizar os melhores negócios para todos os seus clientes.</p>
+          <p> Por isso, nós orientamos e atuamos, do início ao fim, em todo processo de análise e negociação
+            imobiliária.
+          </p>
+          <a [routerLink]="['/sobre-nos/']" class="btn btn-see-more btn-rounded mt-5">VER MAIS <span
+            class="arrow-icon"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blog-decoration top-session"></div>
+  <div class="how-we-do">
+    <div class="container">
+      <div class="row title_block">
+        <div class="col-5 title_right pr-0">Como<br>fazemos</div>
+        <div class="col-1 centerObject1 px-0"><img src="assets/img/line-diag.png" alt=""></div>
+        <div class="col-6 title_left d-block d-sm-block d-md-none pl-3">A nossa forma de trabalhar é o segredo para uma
+          jornada de sucesso.
+        </div>
+        <div class="col-5 title_left d-none d-sm-none d-md-block pl-2">A nossa forma de trabalhar é o <br/>segredo para
+          uma jornada de <br/>sucesso.
+        </div>
+      </div>
+      <div class="row picture_block">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 upmobile50">
+          <div class="HWD-img-block">
+            <div class="HWD-picture-frame">
+              <img src="assets/img/pic-hwd-01.png" alt="" class="HWD-picture">
+            </div>
+          </div>
+          <div class="icon-block">
+            <p class="HWD-text"><label class="HWD-number">1</label>Preencha o formulário de contato com seus dados para
+              que um de nossos consultores possa lhe retornar.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 upmobile50">
+          <div class="HWD-img-block">
+            <div class="HWD-picture-frame">
+              <img src="assets/img/pic-hwd-02.png" alt="" class="HWD-picture">
+            </div>
+          </div>
+          <div class="icon-block">
+            <p class="HWD-text"><label class="HWD-number">2</label>Feito isso, nossos especialistas irão lhe contatar
+              para agendar uma visita em seu imóvel, avalia-lo, tirar fotos profissionais e apresentar o documento de
+              autorização de venda e/ou locação.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 upmobile50">
+          <div class="HWD-img-block">
+            <div class="HWD-picture-frame">
+              <img src="assets/img/pic-hwd-03.png" alt="" class="HWD-picture">
+            </div>
+          </div>
+          <div class="icon-block">
+            <p class="HWD-text"><label class="HWD-number">3</label>Em seguida, seu imóvel irá passar por um processo de
+              aprovação do departamento de marketing, com o intuito de maximizar a divulgação.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 upmobile50">
+          <div class="HWD-img-block">
+            <div class="HWD-picture-frame">
+              <img src="assets/img/pic-hwd-04.png" alt="" class="HWD-picture">
+            </div>
+          </div>
+          <div class="icon-block">
+            <p class="HWD-text"><label class="HWD-number">4</label>A partir daí, você faz parte da Next, e, poderá
+              acompanhar todo o processo de negociação, por meio de nosso email 360 e continuo dialogo com nossos
+              consultores.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row divBtnDownload">
+        <div class="col-md-12 centerObject"><a [routerLink]="['/quero-negociar/']"
+                                               class="btn btn-generic-inverse btn-rounded ">QUERO
+          NEGOCIAR</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0Wj_UqH7XcM?si=gXB6qTufbk6YfKv-&amp;controls=0&autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</ng-template>

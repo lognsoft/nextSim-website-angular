@@ -1,0 +1,60 @@
+<div id="backdrop">
+  <section class="content">
+    <div class="container bg-gray">
+      <div class="row py-5">
+        <div class="col-lg-2 sidebar text-right">
+
+          <h3 class="blog-title-menu-lateral">Blog Next</h3>
+
+          <ul id="blog-menu-lateral">
+            <li><a [class.active]="currentTaxonomy === ''" (click)="changeCategory(null)">TODOS</a></li>
+            <li *ngFor="let taxonomy of taxonomies"><a [class.active]="currentTaxonomy === taxonomy.slug"
+                                                       (click)="changeCategory(taxonomy)"> {{taxonomy.name}}</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-9 offset-lg-1 blog-list">
+
+          <div class="d-block d-sm-flex item" *ngIf="posts?.length === 0">
+            <h4>Nenhuma postagem encontrada!</h4>
+          </div>
+          <div class="row BlogCard BlogCardShadowBox animated fadeIn all_slides_hook" style="" id="slide_"
+               data-slide="" *ngFor="let post of posts">
+
+            <div class="col-lg-5 px-0 " style="overflow: hidden;">
+              <a title="">
+                <div class="BlogCardCover" [ngStyle]="{'background-image': 'url(' + post?.image + ')'}">
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-7 blog-padding-left-50">
+
+
+              <div class="row margin-top-30">
+                <div class="col-12">
+                  <h6 class="text-orange text-uppercase font-weight-bold" style="letter-spacing: 2px;"></h6>
+                  <h2 class="text-dark-gray blog-title pt-2 pb-3 ">{{post?.title?.rendered}}</h2>
+                  <p class="text-gray-300">{{removeHTML(post?.excerpt?.rendered)}}</p>
+                  <a [routerLink]="'/blog/' + post?.slug" class="btn btn-see-more btn-rounded" title="">
+                    VER MAIS <span class="arrow-icon"></span>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12" *ngIf="allPosts?.length > 10">
+            <ngb-pagination [collectionSize]="pages" [(page)]="currentPage" [maxSize]="5" [rotate]="true"
+                            [boundaryLinks]="true" (pageChange)="changePage($event)"></ngb-pagination>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- Modal -->
+
+  </section>
+</div>

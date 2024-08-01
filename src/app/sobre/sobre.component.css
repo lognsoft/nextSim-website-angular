@@ -1,0 +1,32 @@
+
+.media i {
+  align-self: center;
+
+}
+
+.btn-in {
+  display: none;
+}
+.tl-title {
+  width: 80px;
+  line-height: normal;
+}
+
+.txt3 {
+  margin-bottom: 0;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .sobre-especialistas .top-text {
+    font-size: 1.5rem;
+  }
+
+  .sobre-especialistas img {
+    width: 18%;
+  }
+  .sobre-especialistas .text-hist {
+    font-size: 1rem;
+  }
+
+}

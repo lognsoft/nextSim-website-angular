@@ -1,0 +1,296 @@
+<header class=""
+        [ngClass]="{'home-header': rootView, 'container-fluid PropertyListHeader': !rootView }"
+        [style.background-image]="rootView ? ('url(' + image + ')') : 'none'">
+  <div class="row NextMobileMenu d-lg-none mt-4">
+    <div class="col-2 text-left">
+      <a class="toggleMenu" (click)="showMobileMenu = !showMobileMenu">
+        <img src="assets/img/menu-mobile.png" [ngClass]="{'darkIcon': !rootView}">
+      </a>
+    </div>
+    <div class="col-8 text-center">
+      <a [routerLink]='["/"]'>
+        <img src="assets/img/logo-next-header.svg" alt="" width="90" *ngIf="!rootView">
+      </a>
+    </div>
+    <div class="col-2 text-right">
+    </div>
+  </div>
+  <div class="MenuMobile animated" [ngClass]="{'open': showMobileMenu}">
+    <div class="container-fluid">
+      <div class="row MobileMenuHeader">
+        <div class="col-12 col-sm-12">
+          <a class="CloseMenu" (click)="showMobileMenu = false">
+            <img src="assets/img/menu-burg-laranja.png"/>
+            <span>MENU</span>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12  col-sm-12 px-0">
+          <ul class="FirstMenu">
+            <li class="CollapseMobile1">
+              <a href="#" (click)="mobileMenuAlugar = !mobileMenuAlugar">Quero alugar</a>
+              <ul class="SecondMenu Collapse1">
+                <li>
+                  <a class="dropdown-item"
+                     [routerLink]="['/imoveis/']" [queryParams]="{finalidade: 'residencial', categoria: 'alugar'}">Residencial</a>
+                </li>
+                <li>
+                  <a class="dropdown-item"
+                     [routerLink]="['/imoveis/']" [queryParams]="{finalidade: 'comercial', categoria: 'alugar'}">Comercial</a>
+                </li>
+              </ul>
+            </li>
+            <li class="CollapseMobile2">
+              <a href="#">Quero comprar</a>
+              <ul class="SecondMenu Collapse2">
+                <li><a class="dropdown-item"
+                       [routerLink]="['/imoveis/']" [queryParams]="{finalidade: 'residencial', categoria: 'comprar'}">Residencial</a>
+                </li>
+                <li><a class="dropdown-item"
+                       [routerLink]="['/imoveis/']" [queryParams]="{finalidade: 'comercial', categoria: 'comprar'}">Comercial</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a [routerLink]='["/imoveis/lancamentos"]'>Lançamentos</a>
+            </li>
+            <li>
+              <a [routerLink]='["/quero-negociar"]'>Quero anunciar</a>
+            </li>
+            <li>
+              <a href="#" (click)="openModal($event, content)">Área do cliente</a>
+            </li>
+            <li><a [routerLink]='["/sobre-nos"]'>Sobre nós</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12  col-sm-12">
+          <div class="d-flex align-items-end align-self-end">
+            <ul class="SocialMobileMenu">
+              <li><a href="https://www.facebook.com/nextsim"><img src="assets/img/Caminho&#32;354.png" alt=""></a></li>
+              <li><a href="https://www.instagram.com/next_sim/"><img src="assets/img/Caminho&#32;355.png" alt=""></a>
+              </li>
+              <li><a href="https://www.youtube.com/channel/nextsim?sub_confirmation=1"><img
+                src="assets/img/Caminho&#32;356.png" alt=""></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="MenuMobilePerfil animated">
+    <div class="container-fluid">
+      <div class="row MobileMenuHeaderPerfil">
+        <div class="col-12  col-sm-12"><a href="#" class="CloseMenuPerfil"><img
+          src="assets/img/user-mobile-orange.png" width="17" alt="user">
+          <span>MEU PERFIL</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="" [ngClass]="{'header-nav container alt': !rootView, 'home-header-fixed': rootView}">
+    <div class="container">
+      <nav class="header-nav container">
+        <ul class="d-none d-sm-none d-md-none d-lg-flex">
+          <li class="logo">
+            <a [routerLink]="['/']">
+              <img src="assets/img/logo-next-home.svg" alt="" width="145" *ngIf="rootView">
+              <img src="assets/img/logo-next-header.svg" alt="" width="145" *ngIf="!rootView">
+            </a>
+          </li>
+          <li class="dropdown" ngbDropdown>
+            <a data-toggle="dropdown" class="dropdown-toggle " id="QueroAlugar" role="button"
+               aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+              Quero alugar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="QueroAlugar" ngbDropdownMenu>
+              <a class="dropdown-item"
+                 [routerLink]="['/imoveis/']" [queryParams]="{finalidade: 'residencial', categoria: 'alugar'}">Residencial</a>
+              <a class="dropdown-item"
+                 [routerLink]="['/imoveis/']"
+                 [queryParams]="{finalidade: 'comercial', categoria: 'alugar'}">Comercial</a>
+            </div>
+          </li>
+          <li class="dropdown" ngbDropdown>
+            <a class="dropdown-toggle " id="QueroComprar" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+              Quero comprar
+            </a>
+            <div class="dropdown-menu " aria-labelledby="QueroComprar" ngbDropdownMenu>
+              <a class="dropdown-item"
+                 [routerLink]="['/imoveis/']" [queryParams]="{finalidade: 'residencial', categoria: 'comprar'}">Residencial</a>
+              <a class="dropdown-item"
+                 [routerLink]="['/imoveis/']"
+                 [queryParams]="{finalidade: 'comercial', categoria: 'comprar'}">Comercial</a>
+            </div>
+          </li>
+          <li>
+            <a [routerLink]='["/imoveis/lancamentos"]'>Lançamentos</a>
+          </li>
+          <li>
+            <a [routerLink]='["/quero-negociar"]'>Quero anunciar</a>
+          </li>
+          <li>
+            <a href="#" (click)="openModal($event, content)">Área do cliente</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="container title-home-section d-lg-none" *ngIf="rootView">
+    <a href="index.html#" class="logo">
+      <img src="assets/img/logo-next.svg" alt="" width="145">
+    </a>
+    <h3 [innerHTML]="title">
+
+    </h3>
+    <h4 class="font-weight-semibold">Encontre o lugar dos seus sonhos em Campinas e região:</h4>
+  </div>
+  <div class="container title-home-section d-none d-lg-block" *ngIf="rootView">
+    <h3 [innerHTML]="title">
+    </h3>
+    <h4 class="font-weight-semibold">Encontre o lugar dos seus sonhos em Campinas e região:</h4>
+  </div>
+  <div class="container home-filter " *ngIf="rootView">
+    <form action="https://nextsim.com.br/imoveis" method="GET" id="home-search">
+      <div class="row d-none d-lg-block">
+        <div class="col-md-12">
+          <div class="filter-bar-home centerObject">
+            <div class="goal" ngbDropdown #dropCategoria="ngbDropdown" [autoClose]="true">
+              <div class="goal-title finalidade" ngbDropdownToggle id="dropdownForm1"><span
+                class="icon-goal arrow-down-icon"></span> <span
+                class="goal-title-in">{{simpleSearch.categoria || 'Finalidade'}}</span>
+              </div>
+              <div class="goal-options" ngbDropdownMenu aria-labelledby="dropdownForm1">
+                <div class="form-check goal-option" (click)="selectCategoria('comprar', dropCategoria)">
+                  <label class="form-check-label" id="label-comprar">
+                    Comprar
+                  </label>
+                </div>
+                <div class="form-check goal-option" (click)="selectCategoria('alugar', dropCategoria)">
+                  <label class="form-check-label" id="label-alugar">
+                    Alugar
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="category" ngbDropdown #dropFinalidade="ngbDropdown" [autoClose]="true">
+              <div class="category-title" ngbDropdownToggle id="dropdownForm2"><span
+                class="icon-category arrow-down-icon"></span> <span
+                class="category-title-in">{{simpleSearch.finalidade || 'Categoria'}}</span></div>
+              <div class="category-options" ngbDropdownMenu aria-labelledby="dropdownForm2">
+                <div class="form-check category-option" (click)="selectFinalidade('residencial', dropFinalidade)">
+                  <label class="form-check-label">
+                    Residencial
+                  </label>
+                </div>
+                <div class="form-check category-option" (click)="selectFinalidade('comercial', dropFinalidade)">
+                  <label class="form-check-label">
+                    Comercial
+                  </label>
+                </div>
+                <div class="form-check category-option" (click)="scroll()">
+                  <label class="form-check-label">
+                    Lançamentos
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="searchfield">
+              <input type="text" class="form-control" id="search-field"
+                     placeholder="Cidade, bairro ou código" autocomplete="off" [(ngModel)]="simpleSearch.campo"
+                     (keyup)="searchAutocomplete($event)" id="userIdFirstWay" list="dynmicUserIds"
+                     (change)="onSelectAutoComplete($event, simpleSearch.campo)"
+                     [ngModelOptions]="{standalone: true}">
+              <!--                     [attr.list]="autocompletes && autocompletes.length > 4 ? 'dynmicUserIds': '' "-->
+              <datalist>
+                <option *ngFor="let item of autocompletes" [value]="item.value">{{item.value}}</option>
+              </datalist>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-none d-sm-none d-md-block">
+          <button class="btn btn-search btn-rounded" (click)="search()">
+            <i class="fas fa-search"></i> BUSCAR
+          </button>
+        </div>
+        <div class="col-md-12 d-block d-sm-block d-md-none">
+          <button class="btn btn-search btn-rounded " (click)="open()"
+                  type="button">
+            <i class="fas fa-search"></i> REALIZAR PESQUISA
+          </button>
+        </div>
+        <div class="col-md-12 d-none d-lg-block">
+          <a class="btn btn-custom-your-search btn-rounded" data-toggle="modal" data-target=".Home-Personal-Filter-Bar"
+             (click)="open()">
+            <span class="custom-your-search-icon"></span> Personalize a sua busca
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container scroll-btn" *ngIf="rootView">
+    <span href=""><img src="assets/img/arrow-01.png" width="50" id="down-arrow" (click)="scroll()"></span>
+  </div>
+</header>
+
+<app-custom-search #customSearch></app-custom-search>
+
+<div class="modal"></div>
+
+<ng-template #content let-modal>
+  <div class="row modal-area-cliente">
+    <div class="close-modal" (click)="closeModal()"></div>
+    <div class="col-12">
+      <h2 class="text-center">Área do Cliente</h2>
+      <div class="row justify-content-center ">
+        <div class="col-12 col-md-9 border-me owli mb-3">
+          <div class="row align-items-center no-gutters mb-3 ">
+            <div class="col-3 col-md-4">
+              <img src="../../assets/images/owli.png" class="img-fluid"/>
+            </div>
+            <div class="col-9 col-md-8 font-weight-bold pl-2">
+              Para acessar a área do cliente faça download do aplicativo Owli
+            </div>
+          </div>
+          <div class="row align-items-center no-gutters ">
+            <div class="col-6">
+              <a href="https://apps.apple.com/br/app/owli/id1397598475" target="_blank">
+                <img src="../../assets/images/app-store.png" class="img-fluid"/>
+              </a>
+            </div>
+            <div class="col-6">
+              <a href="https://play.google.com/store/apps/details?id=br.com.owli&hl=pt_BR" target="_blank">
+                <img src="../../assets/images/google-play.png" class="img-fluid"/>
+              </a>
+            </div>
+            <div class="col-12">
+              <h6 class="text-center mt-4 mb-2 font-weight-bold">Perdeu seu acesso? Envie um e-mail para: <a
+                href="mailto:administrativo@nextsim.com.br">administrativo@nextsim.com.br</a></h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-9 border-me">
+          <a
+            href="https://api.whatsapp.com/send?phone=5519999120030&text=Oi,%20preciso%20de%20ajuda%20com%20a%20manuten%C3%A7%C3%A3o%20do%20meu%20im%C3%B3vel%20Next!"
+            target="_blank" class="row align-items-center no-gutters ">
+            <div class="col-3 col-md-4">
+              <img src="../../assets/images/whatsapp.png" class="img-fluid"/>
+            </div>
+            <div class="col-9 col-md-8 font-weight-bold font-weight-bold pl-2">
+              Precisa de manuteção?<br/>
+              Clique aqui para acessar nosso canal no WhatsApp
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

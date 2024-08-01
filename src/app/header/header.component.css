@@ -1,0 +1,72 @@
+ngb-tabset {
+  width: 100%;
+}
+
+.nav.nav-tabs {
+  width: 100%;
+  margin: 15px auto 0 auto;
+  border-bottom: 1px solid #DBDBDB;
+  border-top: 1px solid #DBDBDB;
+  text-align: center;
+  display: flex;
+}
+
+.nav.nav-tabs li a,
+.nav.nav-tabs div.nav-item a {
+  color: #575656;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 600 !important;
+  height: 60px;
+  letter-spacing: 1.6px;
+  min-width: 150px;
+  padding: 20px 0 10px 0;
+  text-align: center;
+
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link.active i {
+  color: #495057;
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: bold !important;
+  color: #fe6900 !important;
+}
+
+.HorizontalCheckBoxMobileLabel.btn.active {
+  background: #fe6900 !important;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+.CheckHorizontalLabel input[type=checkbox] {
+  display: none;
+}
+
+.CheckHorizontalLabel {
+  display: inline-block;
+  cursor: pointer;
+  outline: 0;
+  width: 35px;
+  height: 35px;
+  background: #dbdbdb;
+  color: #575656;
+  padding-top: 4px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 100%;
+  margin: 0 10px;
+}
+
+.CheckHorizontalLabel.active {
+  background: #fe6900;
+  color: #fff;
+}
+
+.CheckHorizontalInput {
+  display: none;
+}
