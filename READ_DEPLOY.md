@@ -55,7 +55,7 @@ node -v
 
 Siga estes passos para configurar e fazer o deploy do projeto usando NVM e Firebase.
 
-**OBS:** Sempre que for efetuar um deploy, use a versão `14.21.3` do nodejs.
+**OBS:** Sempre que for efetuar um deploy, use a versão `14.21.3` do nodejs. E sempre que for fazer deploy, use a versão mais recente do nodejs.
 
 
 ## 1. Instalar NVM
