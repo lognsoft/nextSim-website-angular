@@ -2,7 +2,7 @@
 
 **NVM (Node Version Manager)** é uma ferramenta que permite alterar a versão do Node.js sem precisar instalar diretamente na máquina. Isso facilita a troca de versões dentro de um projeto, tornando o gerenciamento de diferentes versões do Node.js mais simples e eficiente.
 
-## 1. Como instalar NVM
+## 1. Como instalar NVM.
 
 Para instalar o NVM, acesse o link de releases do projeto no GitHub:
 [https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
