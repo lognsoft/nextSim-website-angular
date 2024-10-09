@@ -72,6 +72,7 @@ export class LancamentoComponent implements OnInit {
       this.lancamentoService.slug(params.slug).subscribe(value => {
 
         this.lancamento = value;
+        console.log(this.lancamento);
         this.lancamento.image = this.lancamento?.image?.replace('-1200x800', '');
         if (this.lancamento && this.lancamento.fields && this.lancamento.fields.planta) {
           this.imgs = this.lancamento.fields.planta.map(value1 => {
@@ -146,6 +147,12 @@ export class LancamentoComponent implements OnInit {
 
   onSlide(slideEvent: NgbSlideEvent) {
     this.currentPlant = slideEvent.current;
+  }
+
+  formatValue(value:string | number):string{
+    let bla:number = typeof(value) === 'string' ? Number(value) : value;
+
+    return new Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(bla);
   }
 
 }

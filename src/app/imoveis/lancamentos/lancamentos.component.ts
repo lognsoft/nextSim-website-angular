@@ -27,4 +27,9 @@ export class LancamentosComponent implements OnInit {
     });
   }
 
+  formatValue(val:string | number):string{
+    let valNumber:number = typeof(val) === 'string' ? parseFloat(val) : val;
+    return new Intl.NumberFormat('pt-BR', { style:'currency', currency: 'BRL' }).format(valNumber);
+  }
+
 }

@@ -21,10 +21,36 @@
               <div class="col-12 col-sm-4" *ngFor="let lancamento of lancamentos">
                 <a [routerLink]="['/imoveis/lancamentos/' + lancamento.slug]">
                   <div class="item" [style.background-image]="'url(' + lancamento.image + ')'">
-                    <div class="lancamento_nome">
+                    <!-- <div class="lancamento_nome">
                       <div class="row">
                         <div class="col">
                           <span>{{lancamento.title.rendered}}</span>
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="lancamento_nome">
+                      <div class="lancamento_box-info">
+                        <span>{{lancamento?.title.rendered}}</span>
+                        <div class="lancamento_info">
+                          <div class="info">
+                            <div class="info_single">
+                                <small>a partir de</small>
+                                <p>
+                                  <span>{{ lancamento?.fields.metragem }}</span>m2
+                                </p>
+                            </div>
+                            <div class="info_single">
+                              <i class="fas fa-car"></i>
+                              <span>{{ lancamento?.fields.garagens }}</span>
+                            </div>
+                            <div class="info_single">
+                              <i class="fas fa-bed"></i>
+                              <span>{{ lancamento?.fields.suites }}</span>
+                            </div>
+                          </div>
+                          <div class="value">
+                            a partir de {{ formatValue(lancamento?.fields.preco) }}
+                          </div>
                         </div>
                       </div>
                     </div>

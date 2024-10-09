@@ -202,7 +202,7 @@
             </div>
             <div class="searchfield">
               <input type="text" class="form-control" id="search-field"
-                     placeholder="Cidade, bairro ou código" autocomplete="off" [(ngModel)]="simpleSearch.campo"
+                     placeholder="Bairro, rua ou condomínio" autocomplete="off" [(ngModel)]="simpleSearch.campo"
                      (keyup)="searchAutocomplete($event)" id="userIdFirstWay" list="dynmicUserIds"
                      (change)="onSelectAutoComplete($event, simpleSearch.campo)"
                      [ngModelOptions]="{standalone: true}">

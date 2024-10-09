@@ -49,6 +49,33 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
+            
+
+            <!-- value -->
+            <div class="value">
+              <p>
+                <span *ngIf="lancamento.fields.metragem !== undefined && lancamento.fields.metragem > 0">A partir de <span class="span-bold">{{ lancamento.fields.metragem }}</span>m2</span>
+                
+                <span *ngIf="lancamento.fields.metragem !== undefined && lancamento.fields.metragem > 0 && lancamento.fields.preco !== undefined && lancamento.fields.preco > 0" class="span-bold">|</span>
+                <span *ngIf="lancamento.fields.preco !== undefined && lancamento.fields.preco > 0">a partir de <span class="span-bold">{{ formatValue(lancamento.fields.preco) }}</span></span>
+                
+              </p>
+            </div>
+
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container-fluid content_portfolio" *ngIf="lancamento">
+  <div class="row">
+    <div class="col-md-12 c_left">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
             <h2>Conceito</h2>
             <p>{{lancamento.fields.conceito}}
 

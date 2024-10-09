@@ -18,8 +18,9 @@ export class WPService {
 
 
   all(): Observable<HttpResponse<any>> {
+    // ${LANCAMENTO_URL}/wp-json/wp/v2/portfolio/?_fields[]=id&_fields[]=title&_fields[]=image&_fields[]=slug&_fields[]=preco&_fields[]=metragem&_fields[]=garagens&_fields[]=suites&per_page=100
     return this.http
-      .get<any>(`${LANCAMENTO_URL}/wp-json/wp/v2/portfolio/?_fields[]=id&_fields[]=title&_fields[]=image&_fields[]=slug&per_page=100`, {observe: 'response'});
+      .get<any>(`${LANCAMENTO_URL}/wp-json/wp/v2/portfolio/?per_page=100`, {observe: 'response'});
   }
 
   slug(slug: string): Observable<Lancamento> {

@@ -305,6 +305,18 @@ section .title:after {
   width: 10px;
 }
 
+.content_portfolio .value > p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.content_portfolio .value span.span-bold{
+  font-size: 32px;
+  font-weight: 500;
+}
+
 .content_portfolio .owl-theme .owl-nav {
   position: absolute;
   /* bottom: 50%; */

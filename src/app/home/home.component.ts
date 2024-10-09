@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {WPService} from '../core/services/w-p.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,28 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  owlCustomOptions:OwlOptions = {
+    dots: false,
+    loop: true,
+    margin: 10,
+    nav: false,
+    autoHeight: true,
+    autoplay: true,
+    responsive:{
+      0:{
+        items:1
+      },
+      500:{
+        items:2
+      },
+      550:{
+        items:3
+      },
+    }
+  }
 
   lancamentos: any[] = [];
+  arrayOfArrays:Array<any[]> = [];
   posts: any[] = [];
   currentPost = 0;
 
@@ -27,8 +48,18 @@ export class HomeComponent implements OnInit {
 
     this.lancamentoService.all().subscribe(value => {
       this.lancamentos = value.body;
-      if (this.lancamentos.length > 6) {
-        this.lancamentos = this.lancamentos.slice(0, 6);
+      if (this.lancamentos.length > 18) {
+        this.lancamentos = this.lancamentos.slice(0, 18);
+        
+        let tempArray:Array<any> = [];
+        for(let i = 0; i < this.lancamentos.length; i++){
+          if(tempArray.length === 2){
+            this.arrayOfArrays.push(tempArray);
+            tempArray = [];
+          }
+
+          tempArray.push(this.lancamentos[i]);
+        }
       }
 
     });
@@ -82,6 +113,11 @@ export class HomeComponent implements OnInit {
     modal.hidden.subscribe(() => {
       console.log('modal shown');
     });
+  }
+
+  formatValue(val:string | number):string{
+    let valNumber:number = typeof(val) === 'string' ? parseFloat(val) : val;
+    return new Intl.NumberFormat('pt-BR', { style:'currency', currency: 'BRL' }).format(valNumber);
   }
 
 }

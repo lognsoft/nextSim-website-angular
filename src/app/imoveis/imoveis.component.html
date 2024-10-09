@@ -210,9 +210,17 @@
               </div>
             </div>
 
-            <div class="col-12" [hidden]="allImoveis?.length <= 10">
-              <ngb-pagination [collectionSize]="pages" [(page)]="currentPage" [maxSize]="5" [rotate]="true"
-                              [boundaryLinks]="true" (pageChange)="changePage($event)"></ngb-pagination>
+            <div class="col-12" [hidden]="allImoveis?.length < 4">
+              <ngb-pagination
+                [collectionSize]="pages"
+                [(page)]="currentPage"
+                [maxSize]="3"
+                [size]="3"
+                [rotate]="true"
+                [boundaryLinks]="false"
+                (pageChange)="changePage($event)"
+                [ellipses]="false"
+              ></ngb-pagination>
             </div>
           </div>
 

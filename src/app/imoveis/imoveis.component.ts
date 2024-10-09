@@ -74,8 +74,15 @@ export class ImoveisComponent implements OnInit, AfterViewInit {
 
   @ViewChild('customSearch') customSearch: CustomSearchComponent;
 
-  constructor(private route: ActivatedRoute, private ngxService: NgxUiLoaderService, private all: AllImoveis,
-              private router: Router, private modalService: NgbModal, private firestore: Firestore) {
+  constructor(
+    private route: ActivatedRoute,
+    private ngxService: NgxUiLoaderService,
+    private all: AllImoveis,
+    private router: Router,
+    private modalService: NgbModal,
+    private firestore: Firestore
+  ) {
+
   }
 
   ngOnInit() {

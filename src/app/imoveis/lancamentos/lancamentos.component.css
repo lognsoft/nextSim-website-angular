@@ -3,7 +3,7 @@
   height: 230px;
   background-size: cover;
   background-position: center;
-  margin-bottom: 30px;
+  position: relative;
 }
 .blog-thumb img {
   cursor: pointer;
@@ -11,8 +11,9 @@
 .lancamento_nome {
   position: absolute;
   top: 0;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,27 +21,87 @@
   -moz-animation: all 0.5s ease-out;
   -o-animation: all 0.5s ease-out;
   animation: all 0.5s ease-out;
+  background: rgba(0, 0, 0, .6);
+  opacity: 0;
+  padding: 0 2px;
 }
 
 .lancamento_nome:hover {
-  background: rgba(0, 0, 0, .6);
+  opacity: 1;
 }
 
-.lancamento_nome span {
+.lancamento_nome > span {
+  display: block;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   color: #fe6900;
   -webkit-animation: all 0.5s ease-out;
   -moz-animation: all 0.5s ease-out;
   -o-animation: all 0.5s ease-out;
   animation: all 0.5s ease-out;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
 }
 
-.lancamento_nome:hover span {
+.lancamento_nome:hover > span {
   opacity: 1;
 }
 
-.property_releases_nav {
+.lancamento_box-info{
+  width: 100%;
+  max-width: 300px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
 
+.lancamento_box-info .value{
+  font-weight: bold;
+}
+
+.lancamento_box-info .info{
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.lancamento_box-info .info .info_single{
+  width: 100%;
+  max-width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+.lancamento_box-info .info .info_single:nth-child(2){
+  border-left: 2px;
+  border-right: 2px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: #000000;
+  border-style: solid;
+}
+
+.lancamento_box-info .info .info_single i{
+  font-size: 25px;
+}
+
+.lancamento_box-info .info .info_single small{
+  font-size: 12px;
+}
+
+.lancamento_box-info .info .info_single span{
+  color: #000000 !important;
+  font-weight: bold;
+}
+
+.lancamento_box-info .info .info_single p span{
+  font-size: 25px;
 }
 
 .property_releases_nav ul li a {
