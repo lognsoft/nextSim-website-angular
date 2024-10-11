@@ -1,5 +1,7 @@
 # Guia de Instalação do Projeto
 
+O SERVIDOR PRECISA TER PELO MENOS 2GB DE RAM.
+
 Este documento oferece um guia detalhado para a instalação e execução do projeto.
 
 ## Pré-requisitos
