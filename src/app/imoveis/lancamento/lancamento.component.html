@@ -134,6 +134,19 @@
   [imageIndex]="selectedImageIndex"
   [show]="showFlag"
   (close)="closeEventHandler()"></ng-image-fullscreen-view>
+<section class="container-fluid content_portfolio" *ngIf="lancamento?.fields?.video">
+  <div class="container container-video">
+    <iframe 
+      [src]="urlSafe"
+      width="100%" 
+      height="100%" 
+      allowfullscreen
+      frameborder="0" 
+      loading="lazy"
+      >
+    </iframe>
+  </div>
+</section>
 <section class="container-fluid content_portfolio" *ngIf="lancamento">
   <div class="row">
     <div class="col-md-12 c_left">

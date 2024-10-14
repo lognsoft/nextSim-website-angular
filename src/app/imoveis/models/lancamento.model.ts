@@ -54,6 +54,7 @@ export interface Fields {
   endereco:                  string;
   tamanho_do_card:           string;
   acompanhe_obra_galeria:    AcompanheObraGaleria[];
+  video:                     string;
 }
 
 export interface AcompanheObraGaleria {

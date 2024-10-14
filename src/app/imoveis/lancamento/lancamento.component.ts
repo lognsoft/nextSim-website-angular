@@ -9,6 +9,7 @@ import {NgbSlideEvent} from '@ng-bootstrap/ng-bootstrap/carousel/carousel';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MASKS} from 'ng-brazil';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lancamento',
@@ -22,6 +23,7 @@ export class LancamentoComponent implements OnInit {
   MASKS = MASKS;
   imgs: Array<object>;
   currentPlant = 'plant0';
+  urlSafe: SafeResourceUrl;
 
   selectedImageIndex = 0;
   arrayOfArrays = []
@@ -72,7 +74,7 @@ export class LancamentoComponent implements OnInit {
   };
 
   constructor(private route: ActivatedRoute, private lancamentoService: WPService, private formBuilder: FormBuilder,
-              private modalService: NgbModal, private toastr: ToastrService, private service: LeadService) {
+              private modalService: NgbModal, private toastr: ToastrService, private service: LeadService, private sanitizer: DomSanitizer) {
   }
 
 
@@ -90,7 +92,6 @@ export class LancamentoComponent implements OnInit {
       this.lancamentoService.slug(params.slug).subscribe(value => {
 
         this.lancamento = value;
-        console.log(this.lancamento);
         this.lancamento.image = this.lancamento?.image?.replace('-1200x800', '');
         if (this.lancamento && this.lancamento.fields && this.lancamento.fields.planta) {
           this.imgs = this.lancamento.fields.planta.map(value1 => {
@@ -124,6 +125,10 @@ export class LancamentoComponent implements OnInit {
           window.scrollTo({left: 0, top: 0, behavior: 'smooth'});
         } catch (e) {
           window.scrollTo(0, 0);
+        }
+        
+        if(this.lancamento?.fields?.video) {
+          this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.lancamento.fields.video);
         }
       });
 

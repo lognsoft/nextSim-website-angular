@@ -341,6 +341,11 @@ section .title:after {
   width: 10px;
 }
 
+.container-video{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 .content_portfolio .value > p {
   display: flex;
   align-items: center;
