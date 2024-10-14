@@ -96,43 +96,30 @@
 
             <h2>Galeria</h2>
 
-            <!--            <div class="galeria_container owl-carousel owl-theme owl-loaded owl-drag">-->
-            <!--              <owl-carousel-o [options]="customOptions">-->
-            <!--                <ng-template carouselSlide>-->
-            <!--                  <div class="galeria_item item">-->
-            <!--                    <a href="#">-->
-            <!--                      <img class="img-fluid " src="{{lancamento?.fields?.galeria?.imagem_em_pe?.url}}">-->
-            <!--                    </a>-->
-            <!--                    <span class="name">{{lancamento?.fields?.galeria?.imagem_em_pe?.title}}</span>-->
-            <!--                  </div>-->
-            <!--                  <div class="galeria_item item" *ngFor="let galeria of lancamento?.fields?.galeria?.galeria;">-->
-            <!--                    <a href="#">-->
-            <!--                      <img class="img-fluid " src="{{galeria?.url}}">-->
-            <!--                    </a>-->
-            <!--                    <span class="name">{{galeria?.title}}</span>-->
-            <!--                  </div>-->
-            <!--                </ng-template>-->
-
-            <!--              </owl-carousel-o>-->
-            <!--&lt;!&ndash;            </div>&#45;&#45;-->
-
-            <div class="galeria_container row">
+            <div class="galeria_container galeria-responsive" [ngClass]="{'row': lancamento?.fields?.galeria?.imagem_em_pe}">
               <div class="col-12 col-sm-4" *ngIf="lancamento?.fields?.galeria?.imagem_em_pe">
                 <img class="img-fluid " src="{{lancamento?.fields?.galeria?.imagem_em_pe?.url}}" (click)="showLightbox(0)">
                 <span class="name">{{lancamento?.fields?.galeria?.imagem_em_pe?.title}}</span>
               </div>
-              <div [ngClass]="{'col-12': !lancamento?.fields?.galeria?.imagem_em_pe, 'col-8': lancamento?.fields?.galeria?.imagem_em_pe}">
-                <div class="row">
-
-                  <div [ngClass]="{'col-12 col-sm-4': !lancamento?.fields?.galeria?.imagem_em_pe, 'col-12 col-sm-6': lancamento?.fields?.galeria?.imagem_em_pe}" *ngFor="let galeria of lancamento?.fields?.galeria?.galeria | slice:0:(!lancamento?.fields?.galeria?.imagem_em_pe ? 6 : 4); let i=index">
-                    <div class="galeria_item item" >
-                      <a (click)="showLightbox(i + 1)">
-                        <img class="img-fluid " src="{{galeria?.url}}">
+              <div class="galeria_container" [ngClass]="{'col-8': lancamento?.fields?.galeria?.imagem_em_pe}">
+                <owl-carousel-o #galeria [options]="galeriaCustom">
+                  <ng-template *ngFor="let propertys of arrayOfArrays let outerIndex=index" carouselSlide>
+                    <div *ngFor="let img of propertys; let i=index " class="galeria_item item">
+                      <a (click)="showLightbox(outerIndex * propertys.length + i + 1)">
+                        <img src="{{img.url}}"  alt="">
                       </a>
-                      <span class="name">{{galeria?.title}}</span>
+                      <span class="name">{{img.title}}</span>
                     </div>
-                  </div>
-                </div>
+                  </ng-template>
+                </owl-carousel-o>
+              </div>
+              <div class="buttons_galeria">
+                <button class="galeria-prev" (click)="galeria.prev()">
+                  <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="galeria_next" (click)="galeria.next()">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -142,8 +129,8 @@
   </div>
 </section>
 <ng-image-fullscreen-view
-  *ngIf="imagesGaleria.length > 0"
-  [images]="imagesGaleria"
+  *ngIf="imageIndex.length > 0"
+  [images]="imageIndex"
   [imageIndex]="selectedImageIndex"
   [show]="showFlag"
   (close)="closeEventHandler()"></ng-image-fullscreen-view>

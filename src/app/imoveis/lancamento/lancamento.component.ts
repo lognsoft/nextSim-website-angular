@@ -24,7 +24,9 @@ export class LancamentoComponent implements OnInit {
   currentPlant = 'plant0';
 
   selectedImageIndex = 0;
+  arrayOfArrays = []
   imagesGaleria = [];
+  imageIndex = []
   showFlag = false;
 
   @ViewChild('plantas') plantas: NgbCarousel;
@@ -51,6 +53,22 @@ export class LancamentoComponent implements OnInit {
       }
     },
     nav: true
+  };
+  galeriaCustom: OwlOptions = {
+    loop: true,
+    margin: 20,
+    dots: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      500: {
+        items: 2,
+      },
+      1024: {
+        items: 3,
+      },
+    },
   };
 
   constructor(private route: ActivatedRoute, private lancamentoService: WPService, private formBuilder: FormBuilder,
@@ -84,7 +102,21 @@ export class LancamentoComponent implements OnInit {
           });
         }
 
-        this.imagesGaleria = [{image: this.lancamento?.fields.galeria.imagem_em_pe.url}, ...this.lancamento?.fields.galeria.galeria.map(value1 => {
+        this.imagesGaleria = this.lancamento?.fields.galeria.galeria
+        
+          let tempArray:Array<any> = [];
+          for(let i = 0; i < this.imagesGaleria.length; i++){
+            if(tempArray.length === 2){
+              this.arrayOfArrays.push(tempArray);
+              tempArray = [];
+            }          
+            tempArray.push(this.imagesGaleria[i]);
+          }
+          if (tempArray.length > 0) {
+            this.arrayOfArrays.push(tempArray);
+          }
+
+        this.imageIndex = [{image: this.lancamento?.fields.galeria.imagem_em_pe.url}, ...this.lancamento?.fields.galeria.galeria.map(value1 => {
           return {image: value1.url};
         })];
         this.buildForm();
