@@ -79,6 +79,28 @@
                 </div>
               </div>
             </div>
+            <div>
+              <h1>Mais Posts</h1>
+              <span class="line"></span>
+
+              <div class="row" *ngIf="similarPosts.length > 0">
+
+                <div class="col-12 col-md-4" *ngFor="let similar of similarPosts" style="margin-bottom: 40px;">
+                  <img class="img_thumbnail" [src]="similar?.image" alt="similar.title.rendered">
+                  <div class="similar_post_info">
+                    <h3 class="similar_post_title">
+                      {{ similar?.title?.rendered }}
+                    </h3>
+                    <p class="text-gray-300">{{removeHTML(similar?.excerpt?.rendered)}}</p>
+                    <a [routerLink]="'/blog/' + similar?.slug" class="btn btn-see-more btn-rounded">
+                      VER MAIS <span class="arrow-icon"></span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>

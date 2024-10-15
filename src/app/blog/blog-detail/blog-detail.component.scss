@@ -1,0 +1,28 @@
+/* estilização logn */
+
+
+
+.img_thumbnail{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 0.7;
+    object-fit: cover;
+    display: block;
+}
+
+.similar_post_info{
+    background-color: white;
+    padding: 30px 20px 15px 20px;
+}
+
+.similar_post_title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.similar_post_title a{
+    color: inherit;
+}

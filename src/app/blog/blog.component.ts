@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {WPService} from '../core/services/w-p.service';
+
 import * as _ from 'lodash';
 
 @Component({

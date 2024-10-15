@@ -87,7 +87,6 @@ export class WPService {
         .subscribe(value => {
           subscriber.next(value.body);
         }, error => subscriber.error(error));
-
     });
   }
 
@@ -98,9 +97,17 @@ export class WPService {
         .subscribe(value => {
           subscriber.next(value.body);
         }, error => subscriber.error(error));
-
     });
+  }
 
+  similarPosts(categoriyId:number, postId:number){
+    return new Observable(subscriber => {
+      this.http
+      .get<Lancamento[]>(`${LANCAMENTO_URL}/wp-json/wp/v2/posts?categories=${categoriyId}&exclude=${postId}&per_page=3`)
+      .subscribe(value => {
+        subscriber.next(value);
+      }, error => subscriber.error(error));
+    })
   }
 
 }
