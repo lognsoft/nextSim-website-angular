@@ -44,6 +44,7 @@ export interface WpFeaturedmedia {
 
 export interface Fields {
   galeria:                   Galeria;
+  areas_comuns?:             Array<any>
   tipo:                      string;
   ficha_tecnica:             FichaTecnica[];
   geral:                     FichaTecnica[];
@@ -55,6 +56,8 @@ export interface Fields {
   tamanho_do_card:           string;
   acompanhe_obra_galeria:    AcompanheObraGaleria[];
   video:                     string;
+  preco:                    string | undefined;
+  metragem:                 string | undefined;
 }
 
 export interface AcompanheObraGaleria {

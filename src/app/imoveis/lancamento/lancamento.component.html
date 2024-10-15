@@ -43,7 +43,7 @@
 <div class="top_divider" *ngIf="lancamento">
   <i class="arrow"></i>
 </div>
-<section class="container-fluid content_portfolio" *ngIf="lancamento">
+<section class="container-fluid content_portfolio" *ngIf="lancamento && (lancamento?.fields?.metragem || lancamento?.fields?.preco)">
   <div class="row">
     <div class="col-md-12 c_left">
       <div class="container">
@@ -187,6 +187,39 @@
               <h6><b>{{ficha.atributo}}</b></h6>
               <p [innerHTML]="ficha.valor"></p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="container-fluid content_portfolio" *ngIf="lancamento && lancamento?.fields?.areas_comuns">
+  <div class="row">
+    <div class="col-md-12 c_left">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+            <h2>Áreas comuns</h2>
+
+            <div
+              class="p_row"
+              [ngClass]="{
+                'p_center_1': lancamento?.fields?.areas_comuns.length === 1,
+                'p_center_2': lancamento?.fields?.areas_comuns.length === 2,
+                'p_center_3': lancamento?.fields?.areas_comuns.length === 3,
+                'p_center_4': lancamento?.fields?.areas_comuns.length === 4
+              }"
+            >
+              
+            <ul class="list_comun_area" *ngFor="let list of lancamento.fields.areas_comuns">
+              <li *ngFor="let list_item of list?.coluna">{{ list_item?.area }}</li>
+            </ul>
+              
+
+            </div>
+
           </div>
         </div>
       </div>

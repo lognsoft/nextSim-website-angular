@@ -1943,3 +1943,43 @@ button[aria-expanded="true"] .bar3 {
   font-size: 20px;
   letter-spacing: 2px;
 }
+
+
+/* alterações CSS */
+.p_row{
+  display: grid;
+  justify-content: center !important;
+  gap: 10px;
+}
+
+.p_row.p_center_1{
+  grid-template-columns: repeat(1, 1fr);
+}
+.p_row.p_center_2{
+  grid-template-columns: repeat(2, 1fr);
+}
+.p_row.p_center_3{
+  grid-template-columns: repeat(3, 1fr);
+}
+.p_row.p_center_4{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.list_comun_area{
+  padding-left: 20px !important;
+}
+
+@media screen and (max-width: 900px) {
+  .p_row.p_center_3,
+  .p_row.p_center_4{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .p_row.p_center_2,
+  .p_row.p_center_3,
+  .p_row.p_center_4{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
