@@ -1,6 +1,5 @@
 <div class="custom-search-bg" *ngIf="showMe">
-  <div class="row h-100 align-items-center justify-content-center custom-search-type-simple"
-       *ngIf="type === CustomSearchType.simple">
+  <div class="row h-100 align-items-center justify-content-center custom-search-type-simple d-lg-none" *ngIf="type === CustomSearchType.simple">
     <div class="close-me" (click)="closeMe()">
       <img src="../../../../assets/images/coolicon.svg"/>
     </div>
@@ -68,7 +67,7 @@
                        placeholder="Cidade, bairro ou código" autocomplete="off" [(ngModel)]="customSearch.query"
                        (keyup)="searchAutocomplete($event)" id="userIdFirstWay" list="dynmicUserIds"
                        [ngModelOptions]="{standalone: true}">
-                <!--                     [attr.list]="autocompletes && autocompletes.length > 4 ? 'dynmicUserIds': '' "-->
+                                    [attr.list]="autocompletes && autocompletes.length > 4 ? 'dynmicUserIds': '' "
                 <datalist>
                   <option *ngFor="let item of autocompletes" [value]="item">{{item}}</option>
                 </datalist>
@@ -96,7 +95,8 @@
     </div>
   </div>
 
-  <div class="row h-100 custom-search-type-complex justify-content-center" *ngIf="type === CustomSearchType.complex">
+  <div class="row h-100 custom-search-type-complex justify-content-center">
+  <!-- <div class="row h-100 custom-search-type-complex justify-content-center" *ngIf="type === CustomSearchType.complex"> -->
     <div class="top-filter col-12">
       <div class="row align-items-center justify-content-between">
         <div class="col-auto">
@@ -136,7 +136,11 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-md-8 col-12">
+          <h6>Bairro, rua ou condominio</h6>
+          <input type="text" class="form-control">
+        </div>
+        <!-- <div class="col-12 col-md-4">
           <h6>Cidade</h6>
           <mat-form-field>
             <mat-select placeholder="Cidade" (selectionChange)="changeCidade($event)" [(ngModel)]="customSearch.cidade">
@@ -151,7 +155,7 @@
               <mat-option *ngFor="let bairro of customSearch.bairros" [value]="bairro">{{bairro}}</mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
+        </div> -->
         <div class="col-12 col-md-4">
           <h6>Tipo do imóvel</h6>
           <mat-form-field>

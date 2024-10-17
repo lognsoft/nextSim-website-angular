@@ -53,6 +53,7 @@ import {MatOptionModule} from '@angular/material/core';
 import {NgImageFullscreenViewModule} from 'ng-image-fullscreen-view';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 import { PoliticaComponent } from './politica/politica.component';
+import { CustomDropdownComponent } from './core/components/custom-dropdown/custom-dropdown.component';
 
 registerLocaleData(localePt);
 
@@ -127,7 +128,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     LancamentosComponent,
     NextToastComponent,
     CustomSearchComponent,
-    PoliticaComponent
+    PoliticaComponent,
+    CustomDropdownComponent
   ],
   imports: [
     CommonModule,

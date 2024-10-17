@@ -35,16 +35,18 @@
             <div class="row filter-inputs">
               <div class="col-lg-10">
                 <div class="row">
-                  <div class="col-12 d-flex mb-3 mt-1">
+                  <div class="col-12 d-flex mb-3 mt-1 position-relative">
                     <input type="text" class="col" placeholder="Cidade, bairro ou código"
                            [(ngModel)]="simpleSearch"
                            (keyup)="searchAutocomplete($event)" id="userIdFirstWay" list="dynmicUserIdsImoveis"
                            (change)="onSelectAutoComplete($event, simpleSearch)"
                            [ngModelOptions]="{standalone: true}"/>
-                    <datalist class="imoveisDatalist">
-                      <option *ngFor="let item of autocompletes" [value]="item.value">{{item.value}}</option>
-                    </datalist>
-                    <button class="input-button" (click)="doSimpleSearch()"><i></i></button>
+                    
+                           <!-- <datalist class="imoveisDatalist">
+                             <option *ngFor="let item of autocompletes" [value]="item.value">{{item.value}}</option>
+                            </datalist> -->
+                            <button class="input-button" (click)="doSimpleSearch()"><i></i></button>
+                            <app-custom-dropdown></app-custom-dropdown>
                   </div>
                 </div>
                 <div class="row">

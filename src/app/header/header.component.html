@@ -207,9 +207,75 @@
                      (change)="onSelectAutoComplete($event, simpleSearch.campo)"
                      [ngModelOptions]="{standalone: true}">
               <!--                     [attr.list]="autocompletes && autocompletes.length > 4 ? 'dynmicUserIds': '' "-->
-              <datalist>
+
+              <app-custom-dropdown></app-custom-dropdown>
+              <!-- <div class="dropdown-custom">
+                <div class="dropdown-style">
+                  <div>
+                    <h6>Bairro</h6>
+                    <div class="flex-column">
+                      <div>
+                        <label for="">
+                          <input type="checkbox">
+                          rua tal tal tal
+                        </label>
+                      </div>
+                      <div>
+                        <label for="">
+                          <input type="checkbox">
+                          rua tal tal tal
+                        </label>
+                      </div>
+                      <div>
+                        <label for="">
+                          <input type="checkbox">
+                          rua tal tal tal
+                        </label>
+                      </div>
+                      <div>
+                        <label for="">
+                          <input type="checkbox">
+                          rua tal tal tal
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h6>condominio</h6>
+                    <div>
+                      <div class="flex-column ">
+                        <label for="">
+                          <input type="checkbox">
+                          condominio tal tal tal
+                        </label>
+                        <label for="">
+                          <input type="checkbox">
+                          condominio tal tal tal
+                        </label>
+                        <label for="">
+                          <input type="checkbox">
+                          condominio tal tal tal
+                        </label>
+                        <label for="">
+                          <input type="checkbox">
+                          condominio tal tal tal
+                        </label>
+                        <label for="">
+                          <input type="checkbox">
+                          condominio tal tal tal
+                        </label>
+                        <label for="">
+                          <input type="checkbox">
+                          condominio tal tal tal
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <datalist>
                 <option *ngFor="let item of autocompletes" [value]="item.value">{{item.value}}</option>
-              </datalist>
+              </datalist> -->
             </div>
           </div>
         </div>
