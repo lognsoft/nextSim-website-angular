@@ -136,7 +136,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-12">
+        <div class="col-md-8 col-12 d-lg-block d-none">
           <h6>Bairro, rua ou condominio</h6>
           <input type="text" class="form-control">
         </div>
@@ -156,7 +156,7 @@
             </mat-select>
           </mat-form-field>
         </div> -->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-lg-4">
           <h6>Tipo do imóvel</h6>
           <mat-form-field>
             <mat-select placeholder="Todos os imóveis" multiple (selectionChange)="changeTipo($event)" [(ngModel)]="tiposSelecionados">
@@ -164,7 +164,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <h6>Valor</h6>
           <div class="row">
             <div class="col">
@@ -181,7 +181,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-4 order-md-2">
+        <div class="col-12 col-lg-4 order-md-2">
           <h6>Quartos</h6>
           <div class="boll-selector">
             <button [class.current]="customSearch.dormitorios == 1" (click)="customSearch.dormitorios === 1 ? customSearch.dormitorios = null : customSearch.dormitorios = 1"><span>1</span>
@@ -194,7 +194,7 @@
             </button>
           </div>
         </div>
-        <div class="col-12 col-md-4  order-md-2">
+        <div class="col-12 col-lg-4  order-md-2">
           <h6>Banheiros</h6>
           <div class="boll-selector">
             <button [class.current]="customSearch.banheiros == 1" (click)="customSearch.banheiros === 1 ? customSearch.banheiros = null : customSearch.banheiros = 1"><span>1</span>
@@ -207,7 +207,7 @@
             </button>
           </div>
         </div>
-        <div class="col-12 col-md-4 order-md-2">
+        <div class="col-12 col-lg-4 order-md-2">
           <h6>Garagem</h6>
           <div class="boll-selector">
             <button [class.current]="customSearch.garagem == 1" (click)="customSearch.garagem === 1 ? customSearch.garagem = 0 : customSearch.garagem = 1"><span>1</span>
@@ -220,7 +220,7 @@
             </button>
           </div>
         </div>
-        <div class="col-12 col-md-6  order-md-1">
+        <div class="col-12 col-lg-6  order-md-1">
           <h6>Área</h6>
           <div class="row">
             <div class="col">
@@ -240,7 +240,7 @@
       </div>
 
       <div class="row justify-content-center mt-5 d-none d-sm-flex">
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <button class="button-apply justify-content-center" (click)="applyFilter()"><i class="custom-search"></i>Aplicar
             filtros
           </button>

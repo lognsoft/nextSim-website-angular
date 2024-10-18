@@ -46,15 +46,16 @@
                              <option *ngFor="let item of autocompletes" [value]="item.value">{{item.value}}</option>
                             </datalist> -->
                             <button class="input-button" (click)="doSimpleSearch()"><i></i></button>
-                            <app-custom-dropdown></app-custom-dropdown>
+                            <!-- <app-custom-dropdown></app-custom-dropdown> -->
                   </div>
                 </div>
-                <div class="row">
+                <div class="row d-lg-none d-block">
                   <div class="col-12">
                     <button class="button-modal" (click)="openFilter()"><i></i>Filtro Personalizado</button>
                   </div>
                 </div>
               </div>
+              <app-custom-search-imoveis></app-custom-search-imoveis>
             </div>
           </div>
           <div class="col-lg-8 properties-list">
