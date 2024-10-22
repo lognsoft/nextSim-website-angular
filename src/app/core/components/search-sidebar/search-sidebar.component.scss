@@ -1,0 +1,112 @@
+.sidebar-form{
+    form{
+        width: 100%;
+
+        label{
+            display: block;
+            width: 100%;
+            input{
+                width: 100%;
+                font-size: 16px;
+            }
+
+            ::ng-deep .mat-form-field{
+                width: 100%;
+                
+                ::ng-deep .mat-form-field-infix{
+                    background-color: white !important;
+                    border-radius: 8px;
+                    padding: 6px 8px;
+                    height: auto;
+                    border: 1px solid #DEDEDE;
+
+                    ::ng-deep .mat-select-arrow-wrapper,
+                    ::ng-deep .mat-form-field-label-wrapper > label > span{
+                        color: #cecece;
+                    }
+
+                    :ng-deep .mat-select-value,
+                    ::ng-deep .mat-form-field-label-wrapper > label > span{
+                        padding-left: 15px;
+                    }
+
+                    ::ng-deep .mat-select-value-text{
+                        color: #ff6900;
+                    }
+                }
+
+                ::ng-deep .mat-form-field-underline{
+                    display: none !important;
+                }
+            }
+
+            // .mat-form-field-infix{
+            //     background-color: orange !important;
+            //     border-radius: 8px;
+            //     border: none;
+            // }
+
+            &.submit_container{
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+
+                button{
+                    width: 100%;
+                    background-color: #ff6900;
+                    color: #fff;
+                    font-size: 16px;
+                    font-weight: 500;
+                    border: none;
+                    padding: 4px 10px;
+                    border-radius: 8px;
+                    font-family: Raleway;
+                }
+            }
+        }
+
+        .label_grid > .row{
+            margin-top: 10px;
+        }
+
+        .comodos{
+            margin-bottom: 20px;
+
+            span{
+                display: block;
+            }
+
+            .options{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 5px;
+
+                span{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    border: 1px solid #DEDEDE;
+                    cursor: pointer;
+                    font-weight: 500;
+
+                    &.selected{
+                        border: none;
+                        background-color: #ff6900;
+                        color: white;
+                    }
+                }
+            }
+
+        }
+
+        label,
+        .label_grid{
+            margin-bottom: 10px;
+        }
+    }
+}

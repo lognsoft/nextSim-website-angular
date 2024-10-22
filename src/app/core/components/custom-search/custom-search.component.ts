@@ -238,7 +238,7 @@ export class CustomSearchComponent implements OnInit, AfterViewInit {
       dormitorios: (this.customSearch.dormitorios > 0 ? this.customSearch.dormitorios : '') || '',
       garagem: this.customSearch.garagem || '',
       banheiros: (this.customSearch.banheiros > 0 ? this.customSearch.banheiros : '') || '',
-      salas: this.customSearch.salas > 0 ? this.customSearch.salas : '' || '',
+      salas: (this.customSearch.salas > 0 ? this.customSearch.salas : '') || '',
       bairros: this.bairrosSelecionados || [],
       cidade: this.customSearch.cidade || '',
       page: this.customSearch.page,

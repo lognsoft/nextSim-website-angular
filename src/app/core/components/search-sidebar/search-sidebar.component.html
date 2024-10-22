@@ -1,0 +1,137 @@
+<div class="sidebar-form">
+    <form (submit)="searchItem($event)">
+        <label>
+            Cidade, bairro ou condomínio
+            <input
+                type="search"
+                name="search"
+                placeholder=""
+                class="form-control"
+                required
+                [(ngModel)]="searchForm.search"
+            />
+        </label>
+
+        <label class="multi-selector">
+            Tipos de Imóvel
+            <mat-form-field class="selector">
+                <mat-select
+                    multiple
+                    (selectionChange)="changeType($event)"
+                    [(ngModel)]="searchForm.categories"
+                    name="categories"
+                >
+                  <mat-option
+                    *ngFor="let item of categories"
+                    [value]="item.id"
+                  >{{ item.name | titlecase}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </label>
+
+        <div class="label_grid">
+            Preço
+            <div class="row">
+                <label class="col-6">
+                    Mínimo
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="min_price"
+                        [textMask]="{mask: MASKS.currency.textMask}"
+                        placeholder="R$ 20.00"
+                        [(ngModel)]="searchForm.price.min_price"
+                        name="min_price"
+                    />
+                </label>
+                <label class="col-6">
+                    máximo
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="max_price"
+                        [textMask]="{mask: MASKS.currency.textMask}"
+                        placeholder="R$ 100.000.00"
+                        [(ngModel)]="searchForm.price.max_price"
+                        name="max_price"
+                    />
+                </label>
+            </div>
+        </div>
+
+        <div class="label_grid">
+            Área
+            <div class="row">
+                <label class="col-6">
+                    Mínima
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="min_area"
+                        placeholder="30m2"
+                        [(ngModel)]="searchForm.area.min_area"
+                        name="min_area"
+                    />
+                </label>
+                <label class="col-6">
+                    máxima
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="max_area"
+                        placeholder="250m2"
+                        [(ngModel)]="searchForm.area.max_area"
+                        name="max_area"
+                    />
+                </label>
+            </div>
+        </div>
+
+        <div class="comodos">
+            <span>Quartos</span>
+            <div class="options">
+                <span
+                    *ngFor="let item of comodos.quartos; let i = index"
+                    (click)="searchForm.quartos = item.id"
+                    [ngClass]="{'selected': searchForm.quartos === item.id}"
+                >
+                    {{ (i + 1) < 4 ? (i + 1) : ( i+1 )+"+" }}
+                </span>
+            </div>
+        </div>
+
+        <div class="comodos">
+            <span>Banheiros</span>
+            <div class="options">
+                <span
+                    *ngFor="let item of comodos.banheiros; let i = index"
+                    (click)="searchForm.banheiros = item.id"
+                    [ngClass]="{'selected': searchForm.banheiros === item.id}"
+                >
+                    {{ (i + 1) < 4 ? (i + 1) : ( i+1 )+"+" }}
+                </span>
+            </div>
+        </div>
+
+        <div class="comodos">
+            <span>Garagens</span>
+            <div class="options">
+                <span
+                    *ngFor="let item of comodos.garagens; let i = index"
+                    (click)="searchForm.garagens= item.id"
+                    [ngClass]="{'selected': searchForm.garagens === item.id}"
+                >
+                    {{ (i + 1) < 4 ? (i + 1) : ( i+1 )+"+" }}
+                </span>
+            </div>
+        </div>
+
+        <label class="submit_container">
+            <button type="submit">
+                <i class="custom-search"></i>
+                Pesquisar
+            </button>
+        </label>
+
+    </form>
+</div>

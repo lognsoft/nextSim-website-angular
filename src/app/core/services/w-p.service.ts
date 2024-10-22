@@ -2,11 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Lancamento} from "../../imoveis/models/lancamento.model";
+import { ICategorie } from '../types/ICategorie';
+import { IComodos } from '../components/search-sidebar/models/IComodos';
 
 
 // const LANCAMENTO_URL = 'http://localhost/buildingeng.com.br';
 // const LANCAMENTO_URL = 'http://homolog.nextsim.com.br/lancamentos';
-const LANCAMENTO_URL = 'https://admin.nextsim.com.br';
+// const LANCAMENTO_URL = 'https://admin.nextsim.com.br';
+const LANCAMENTO_URL = 'http://localhost/panel';
 
 @Injectable({providedIn: 'root'})
 export class WPService {
@@ -108,6 +111,26 @@ export class WPService {
         subscriber.next(value);
       }, error => subscriber.error(error));
     })
+  }
+
+  getCategories(){
+    return new Observable(subscriber => {
+      this.http
+      .get<ICategorie[]>(`${LANCAMENTO_URL}/wp-json/api/v1/portfolio/categories`)
+      .subscribe(value => {
+        subscriber.next(value);
+      }, error => subscriber.error(error));
+    });
+  }
+
+  getTags(){
+    return new Observable(subscriber => {
+      this.http
+      .get<IComodos>(`${LANCAMENTO_URL}/wp-json/api/v1/portfolio/tags`)
+      .subscribe(value => {
+        subscriber.next(value);
+      }, error => subscriber.error(error));
+    });
   }
 
 }

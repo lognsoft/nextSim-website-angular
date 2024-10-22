@@ -4,6 +4,8 @@
     <div class="properties-content">
       <div class="container mt-5">
         <div class="row">
+
+          <!-- sidebar -->
           <div class="col-lg-4 sidebar">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -23,7 +25,6 @@
                 <li
                   class='breadcrumb-item active' [class.d-none]="breadcrumbTitle"
                   *ngIf="!(customSearch?.customSearch?.categoria === 'comprar' || customSearch?.customSearch?.categoria === 'alugar') && !(customSearch?.customSearch?.finalidade === 'residencial' || customSearch?.customSearch?.finalidade === 'comercial') && queryParams?.query">{{customSearch?.customSearch?.query}} </li>
-
                 <li class='breadcrumb-item active' *ngIf="breadcrumbTitle">{{breadcrumbTitle}}</li>
               </ol>
             </nav>
@@ -32,21 +33,21 @@
                     (click)="badgeClose(badge.query)">{{badge.label}}
                 <button class="btn-badge" (click)="badgeClose(badge.query)">x</button></span>
             </div>
-            <div class="row filter-inputs">
-              <div class="col-lg-10">
+            <div class="filter-inputs">
+              <!-- <div class="col-lg-10">
                 <div class="row">
                   <div class="col-12 d-flex mb-3 mt-1 position-relative">
                     <input type="text" class="col" placeholder="Cidade, bairro ou código"
-                           [(ngModel)]="simpleSearch"
+                           [(ngModel)]="formSearch.search"
                            (keyup)="searchAutocomplete($event)" id="userIdFirstWay" list="dynmicUserIdsImoveis"
                            (change)="onSelectAutoComplete($event, simpleSearch)"
                            [ngModelOptions]="{standalone: true}"/>
                     
-                           <!-- <datalist class="imoveisDatalist">
+                           <datalist class="imoveisDatalist">
                              <option *ngFor="let item of autocompletes" [value]="item.value">{{item.value}}</option>
-                            </datalist> -->
+                            </datalist>
                             <button class="input-button" (click)="doSimpleSearch()"><i></i></button>
-                            <!-- <app-custom-dropdown></app-custom-dropdown> -->
+                            <app-custom-dropdown></app-custom-dropdown>
                   </div>
                 </div>
                 <div class="row d-lg-none d-block">
@@ -54,10 +55,14 @@
                     <button class="button-modal" (click)="openFilter()"><i></i>Filtro Personalizado</button>
                   </div>
                 </div>
-              </div>
-              <app-custom-search-imoveis></app-custom-search-imoveis>
+              </div> -->
+              <!-- <app-custom-search-imoveis #formSearch></app-custom-search-imoveis> -->
+               <app-search-sidebar></app-search-sidebar>
             </div>
           </div>
+          <!-- end sidebar -->
+
+
           <div class="col-lg-8 properties-list">
             <div class="d-block item no-result" *ngIf="(initializeResults) && (allImoveis?.length === 0 || imoveis?.length === 0)">
               <div class="row justify-content-center">

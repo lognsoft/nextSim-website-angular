@@ -54,7 +54,7 @@ import {NgImageFullscreenViewModule} from 'ng-image-fullscreen-view';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
 import { PoliticaComponent } from './politica/politica.component';
 import { CustomDropdownComponent } from './core/components/custom-dropdown/custom-dropdown.component';
-import { CustomSearchImoveisComponent } from './core/components/custom-search-imoveis/custom-search-imoveis.component';
+import { SearchSidebarComponent } from './core/components/search-sidebar/search-sidebar.component';
 
 registerLocaleData(localePt);
 
@@ -131,7 +131,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     CustomSearchComponent,
     PoliticaComponent,
     CustomDropdownComponent,
-    CustomSearchImoveisComponent
+    SearchSidebarComponent
   ],
   imports: [
     CommonModule,
